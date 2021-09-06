@@ -1,12 +1,14 @@
 //variabler
 var c = 255;
 var y = 6.5;
-var rtx = color(255, 0, 0);
+var rtx;
 var s = 1; 
 
 function setup() {
   createCanvas(400, 400);
   background(0,200,255);
+
+  rtx = color(255, 0, 0);
 }
 
 function draw() {
