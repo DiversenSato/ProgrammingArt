@@ -1,19 +1,19 @@
 //variabler
 var c = 255;
 var y = 6.5;
-var rtx;
+var mouthCol;
 var s = 1;
 
 var gameState = 1;
 
 function setup() {
   createCanvas(400, 400);
-  background(0,200,255);
 
-  rtx = color(255, 0, 0);
+  mouthCol = color(255, 0, 0);
 }
 
 function draw() {
+  background(0,200,255);
   rectMode(CENTER);
   //Neck
   fill(245, 200, 200);
@@ -31,9 +31,11 @@ function draw() {
 
   //Mouth
   push();
-  strokeWeight(s);
-  fill(rtx);
-  ellipse(200, 225, 50, 25);
+  if (gameState == 1) {
+    strokeWeight(1);
+    fill(mouthCol);
+    ellipse(200, 225, 50, 25);
+  }
   pop();
 
   //Nose
@@ -66,14 +68,11 @@ function draw() {
 
 function mouseClicked() {
     if(mouseX >= 90 && mouseX <= 330 && mouseY >= 0 && mouseY <= 121) {
-        rtx = color(245, 200, 200);
-        s = 0;
-        push();
-        noStroke();
-        ellipse(200, 225, 60, 50);
-        pop();
-        c = 125;
-        Tree(75,400,50);
+      mouthCol = color(245, 200, 200);
+      gameState == 2;
+      s = 0;
+      c = 125;
+      Tree(75,400,50);
     }
 }
 
