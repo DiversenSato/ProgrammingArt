@@ -1,9 +1,7 @@
 //variabler
 var c = 255;
 var y = 6.5;
-var r = 255;
-var t = 0;
-var x = 0;
+var rtx = color(255, 0, 0);
 var s = 1; 
 
 function setup() {
@@ -27,7 +25,7 @@ function draw() {
 
   push();
   strokeWeight(s);
-  fill(r, t, x);
+  fill(rtx);
   ellipse(200, 225, 50, 25);
   pop();
 
@@ -62,9 +60,7 @@ function draw() {
 
 function mouseClicked() {
     if(mouseX >= 90 && mouseX <= 330 && mouseY >= 0 && mouseY <= 121) {
-        r = 245; 
-        t = 200;
-        x =200
+        rtx = color(245, 200, 200);
         s = 0;
         push();
         noStroke();
