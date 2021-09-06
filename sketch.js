@@ -3,12 +3,13 @@ var c = 255;
 var y = 6.5;
 var mouthCol;
 var s = 1;
+var SkinColour;  
 
 var gameState = 1;
 
 function setup() {
   createCanvas(400, 400);
-
+  SkinColour = color(random(0,255), random(0,255), random(0,255));
   mouthCol = color(255, 0, 0);
 }
 
@@ -20,7 +21,7 @@ function draw() {
   rect(200, 300, 50, 100);
 
   //Body and arm?
-  fill(0, 255, 100);
+  fill(SkinColour);
   rect(200, 350, 100, 100);
 
   //Head
