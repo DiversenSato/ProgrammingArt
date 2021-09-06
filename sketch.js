@@ -3,25 +3,30 @@ var c = 255;
 var y = 6.5;
 var mouthCol;
 var s = 1;
-var SkinColour;  
+var shirtCol;
+
+let treebg;
 
 var gameState = 1;
 
 function setup() {
   createCanvas(400, 400);
-  SkinColour = color(random(0,255), random(0,255), random(0,255));
+  shirtCol = color(random(0,255), random(0,255), random(0,255));
   mouthCol = color(255, 0, 0);
+
+  treebg = createGraphics(400, 400);
 }
 
 function draw() {
   background(0,200,255);
+  image(treebg, 0, 0);
   rectMode(CENTER);
   //Neck
   fill(245, 200, 200);
   rect(200, 300, 50, 100);
 
   //Body and arm?
-  fill(SkinColour);
+  fill(shirtCol);
   rect(200, 350, 100, 100);
 
   //Head
@@ -68,41 +73,45 @@ function draw() {
 }
 
 function mouseClicked() {
-    if(mouseX >= 90 && mouseX <= 330 && mouseY >= 0 && mouseY <= 121) {
+    if(mouseX >= 90 && mouseX <= 330 && mouseY >= 0 && mouseY <= 121 && gameState == 1) {
       mouthCol = color(245, 200, 200);
-      gameState == 2;
+      gameState = 2;
       s = 0;
       c = 125;
       Tree(75,400,50);
+    } else if (mouseX >= 90 && mouseX <= 330 && mouseY >= 0 && mouseY <= 121 && gameState == 2) {
+      gameState = 1;
+      mouthCol = color(255, 0, 0);
+      c = 255;
     }
 }
 
 function Tree(x, y, len) {
-  push();
-  translate(x, y);
+  treebg.push();
+  treebg.translate(x, y);
   tree(len);
-  pop();
+  treebg.pop();
 }
 
 function tree(len) {
   if (len >= 15) {
-    stroke(0x4b, 0x37, 0x1c);
+    treebg.stroke(0x4b, 0x37, 0x1c);
   }
   let rot = random(6, 20);
-  strokeWeight(map(len, 150, 4, 8, 2));
-  line(0, 0, 0, -len);
-  push();
+  treebg.strokeWeight(map(len, 150, 4, 8, 2));
+  treebg.line(0, 0, 0, -len);
+  treebg.push();
   if (len < 15) {
-    stroke(0, 255, 0);
+    treebg.stroke(0, 255, 0);
   }
-  translate(0, -len);
-  rotate(radians(rot));
+  treebg.translate(0, -len);
+  treebg.rotate(radians(rot));
   if (len > 4) {
     tree(len*0.75);
   }
-  pop();
-  translate(0, -len);
-  rotate(radians(-rot));
+  treebg.pop();
+  treebg.translate(0, -len);
+  treebg.rotate(radians(-rot));
   if (len > 4) {
     tree(len*0.75);
   }
