@@ -2,7 +2,9 @@
 var c = 255;
 var y = 6.5;
 var rtx;
-var s = 1; 
+var s = 1;
+
+var gameState = 1;
 
 function setup() {
   createCanvas(400, 400);
@@ -12,42 +14,44 @@ function setup() {
 }
 
 function draw() {
+  rectMode(CENTER);
+  //Neck
   fill(245, 200, 200);
   rect(200, 300, 50, 100);
 
+  //Body and arm?
   fill(0, 255, 100);
   rect(200, 350, 100, 100);
 
-  rectMode(CENTER);
-
+  //Head
   fill(245, 200, 200);
   ellipse(200, 200, 100, 150);
 
   ellipseMode(CENTER);
 
+  //Mouth
   push();
   strokeWeight(s);
   fill(rtx);
   ellipse(200, 225, 50, 25);
   pop();
 
+  //Nose
   fill(245, 200, 200);
   triangle(180, 195, 220, 195, 200, 190);
 
+  //Left and right eye
   fill(255);
   ellipse(175, 165, 20, 20);
-
-  fill(255);
   ellipse(225, 165, 20, 20);
 
+  //Left and right eyebrows
   line(175, 155, 165, 140);
-
   line(225, 155, 235, 140);
 
-
-
-  fill(c);
+  //Cloud
   push();
+  fill(c);
   noStroke();
   ellipse(200,height/y,220,100)
   ellipse(200,height/y,110,125)
