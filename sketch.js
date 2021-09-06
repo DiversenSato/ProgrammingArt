@@ -1,4 +1,4 @@
-//variaber
+//variabler
 var c = 255;
 var y = 6.5;
 var r = 255;
@@ -59,23 +59,22 @@ function draw() {
   ellipse(260,height/y,100,120)
   pop();
 }
-  function mouseClicked() 
-  {
-    if(mouseX >= 90 && mouseX <= 330 && mouseY >= 0 && mouseY <= 121) 
-     {
-       r = 245; 
-       t = 200;
-       x =200
-       s = 0;
-       push();
-       noStroke();
-       ellipse(200, 225, 60, 50);
-       pop();
-       c = 125;
-       Tree(75,400,50);
 
-     }
-  }
+function mouseClicked() {
+    if(mouseX >= 90 && mouseX <= 330 && mouseY >= 0 && mouseY <= 121) {
+        r = 245; 
+        t = 200;
+        x =200
+        s = 0;
+        push();
+        noStroke();
+        ellipse(200, 225, 60, 50);
+        pop();
+        c = 125;
+        Tree(75,400,50);
+    }
+}
+
 function Tree(x, y, len) {
   push();
   translate(x, y);
