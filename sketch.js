@@ -4,7 +4,9 @@ var y = 6.5;
 var r = 255;
 var t = 0;
 var x = 0;
-var s = 1; 
+var s = 1;
+
+var gameState = 1;
 
 function setup() {
   createCanvas(400, 400);
