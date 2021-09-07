@@ -4,17 +4,11 @@ var y = 6.5;
 var mouthCol;
 var s = 1;
 var shirtCol;
+var angle = 0;
 
 let treebg;
-var raindrops = [];
 
 var gameState = 1;
-
-var amogusImg;
-
-function preload() {
-  amogusImg = loadImage('https://static.wikia.nocookie.net/among-us-wiki/images/1/16/Blue.png/revision/latest?cb=20210612161630');
-}
 
 function setup() {
   createCanvas(400, 400);
@@ -22,10 +16,6 @@ function setup() {
   mouthCol = color(255, 0, 0);
 
   treebg = createGraphics(400, 400);
-  
-  for (let i = 0; i < 40; i++) {
-    raindrops[i] = new RainDrop(amogusImg);
-  }
 }
 
 function draw() {
@@ -36,7 +26,7 @@ function draw() {
   fill(245, 200, 200);
   rect(200, 300, 50, 100);
 
-  //Shirt
+  //Body and arm?
   fill(shirtCol);
   rect(200, 350, 100, 100);
 
@@ -46,7 +36,14 @@ function draw() {
 
   ellipseMode(CENTER);
 
-  
+  //Mouth
+  push();
+  if (gameState == 1) {
+    strokeWeight(1);
+    fill(mouthCol);
+    ellipse(200, 225, 50, 25);
+  }
+  pop();
 
   //Nose
   fill(245, 200, 200);
@@ -60,14 +57,14 @@ function draw() {
   push();
   fill(c);
   noStroke();
-  ellipse(200,height/y,220,100);
-  ellipse(200,height/y,110,125);
-  ellipse(180,height/y,100,120);
-  ellipse(150,height/y,100,95);
-  ellipse(240,height/y,100,120);
-  ellipse(260,height/y,100,115);
-  ellipse(260,height/y,150,100);
-  ellipse(260,height/y,100,120);
+  ellipse(200,height/y,220,100)
+  ellipse(200,height/y,110,125)
+  ellipse(180,height/y,100,120)
+  ellipse(150,height/y,100,95)
+  ellipse(240,height/y,100,120)
+  ellipse(260,height/y,100,115)
+  ellipse(260,height/y,150,100)
+  ellipse(260,height/y,100,120)
   pop();
 
   //Mouth
@@ -89,24 +86,27 @@ function draw() {
       r.show();
       r.move();
     }
+  if(i >= 10) 
+  {
+    angle += 0.5;
+    rotate (angle);
   }
-  pop();
 }
 
 function mouseClicked() {
-  if (mouseX >= 90 && mouseX <= 330 && mouseY >= 0 && mouseY <= 121) {
-    if(gameState == 1) {
+    if(mouseX >= 90 && mouseX <= 330 && mouseY >= 0 && mouseY <= 121 && gameState == 1) {
       mouthCol = color(245, 200, 200);
       gameState = 2;
       s = 0;
       c = 125;
       Tree(75,400,50);
-    } else if (gameState == 2) {
+      i++; 
+    } else if (mouseX >= 90 && mouseX <= 330 && mouseY >= 0 && mouseY <= 121 && gameState == 2) {
       gameState = 1;
       mouthCol = color(255, 0, 0);
       c = 255;
+      i++;
     }
-  }
 }
 
 function Tree(x, y, len) {
@@ -139,3 +139,4 @@ function tree(len) {
     tree(len*0.75);
   }
 }
+
