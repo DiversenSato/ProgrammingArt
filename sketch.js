@@ -61,14 +61,14 @@ function draw() {
   push();
   fill(c);
   noStroke();
-  ellipse(200,height/y,220,100)
-  ellipse(200,height/y,110,125)
-  ellipse(180,height/y,100,120)
-  ellipse(150,height/y,100,95)
-  ellipse(240,height/y,100,120)
-  ellipse(260,height/y,100,115)
-  ellipse(260,height/y,150,100)
-  ellipse(260,height/y,100,120)
+  ellipse(200,height/y,220,100);
+  ellipse(200,height/y,110,125);
+  ellipse(180,height/y,100,120);
+  ellipse(150,height/y,100,95);
+  ellipse(240,height/y,100,120);
+  ellipse(260,height/y,100,115);
+  ellipse(260,height/y,150,100);
+  ellipse(260,height/y,100,120);
   pop();
 }
 
