@@ -52,11 +52,6 @@ function draw() {
   fill(245, 200, 200);
   triangle(180, 195, 220, 195, 200, 190);
 
-  //Left and right eye
-  fill(255);
-  ellipse(175, 165, 20, 20);
-  ellipse(225, 165, 20, 20);
-
   //Left and right eyebrows
   line(175, 155, 165, 140);
   line(225, 155, 235, 140);
@@ -81,7 +76,15 @@ function draw() {
     strokeWeight(1);
     fill(mouthCol);
     ellipse(200, 225, 50, 25);
+    //laver hvide øjne
+    fill(255);
+    ellipse(175, 165, 20, 20);
+    ellipse(225, 165, 20, 20);
   } else if (gameState == 2) {
+    //laver røde øjne
+    fill(255,0,0)
+    ellipse(175, 165, 20, 20);
+    ellipse(225, 165, 20, 20);
     for (let r of raindrops) { //Looper igennem hver regndråbe, og viser den
       r.show();
       r.move();
