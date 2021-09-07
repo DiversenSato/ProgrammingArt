@@ -107,31 +107,33 @@ function mouseClicked() {
 }
 
 function Tree(x, y, len) {
-  treebg.push();
-  treebg.translate(x, y);
+  var tempbg = createCanvas(width, height); //Lav et midlertidig canvas hvor træet tegnes på
+  tempbg.translate(x, y);
   tree(len);
-  treebg.pop();
+  treebg = tempbg;
+
+  tempbg.remove();
 }
 
 function tree(len) {
   if (len >= 15) {
-    treebg.stroke(0x4b, 0x37, 0x1c);
+    tempbg.stroke(0x4b, 0x37, 0x1c);
   }
   let rot = random(6, 20);
-  treebg.strokeWeight(map(len, 150, 4, 8, 2));
-  treebg.line(0, 0, 0, -len);
-  treebg.push();
+  tempbg.strokeWeight(map(len, 150, 4, 8, 2));
+  tempbg.line(0, 0, 0, -len);
+  tempbg.push();
   if (len < 15) {
-    treebg.stroke(0, 255, 0);
+    tempbg.stroke(0, 255, 0);
   }
-  treebg.translate(0, -len);
-  treebg.rotate(radians(rot));
+  tempbg.translate(0, -len);
+  tempbg.rotate(radians(rot));
   if (len > 4) {
     tree(len*0.75);
   }
-  treebg.pop();
-  treebg.translate(0, -len);
-  treebg.rotate(radians(-rot));
+  tempbg.pop();
+  tempbg.translate(0, -len);
+  tempbg.rotate(radians(-rot));
   if (len > 4) {
     tree(len*0.75);
   }
